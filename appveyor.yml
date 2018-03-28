@@ -1,14 +1,24 @@
-os: Visual Studio 2015
+# build Configuration, i.e. Debug, Release, etc.
+configuration: Release
 
+dotnet_csproj:
+  patch: true
+  file: 'src\Renci.SshNet.NETCore\Renci.SshNet.NETCore.csproj'
+  version: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
+
+# scripts to run before build
 before_build:
-  - nuget restore src\Renci.SshNet.VS2015.sln
+  - dotnet restore .\src\Renci.SshNet.NETCore\Renci.SshNet.NETCore.csproj
 
-build:
-  project: src\Renci.SshNet.VS2015.sln
-  verbosity: minimal
+build_script:
+  - dotnet build .\src\Renci.SshNet.NETCore\Renci.SshNet.NETCore.csproj
 
-test_script:
-- cmd: >-
-    vstest.console /logger:Appveyor src\Renci.SshNet.Tests\bin\Debug\Renci.SshNet.Tests.dll /TestCaseFilter:"TestCategory!=integration&TestCategory!=LongRunning"
+artifacts:
+  - path: .\src\Renci.SshNet.NETCore\bin\Release\*.nupkg
 
-    vstest.console /logger:Appveyor src\Renci.SshNet.Tests.NET35\bin\Debug\Renci.SshNet.Tests.NET35.dll /TestCaseFilter:"TestCategory!=integration&TestCategory!=LongRunning"
+deploy_script:
+  dotnet nuget push .\src\Renci.SshNet.NETCore\bin\Release\*.nupkg -k oy2ba6knn2hnr4z5mghadhyoflch7rdevjn4yghlszhzai -s https://api.nuget.org/v3/index.json
