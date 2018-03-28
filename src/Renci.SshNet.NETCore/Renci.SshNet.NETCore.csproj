@@ -8,6 +8,7 @@
     <AssemblyOriginatorKeyFile>../Renci.SshNet.snk</AssemblyOriginatorKeyFile>
     <LangVersion>5</LangVersion>
     <SignAssembly>true</SignAssembly>
+    <Version>0.0.2</Version>
     <PackageId>VtNetConnect.Renci.SshNet</PackageId>
     <PackageReleaseNotes>This is a build made especially for VtNetCore and VtConnect. Do not use this version directly, they are meant for use only within VtNetConnect, the terminal emulation control library.</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
