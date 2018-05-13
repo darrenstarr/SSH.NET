@@ -141,9 +141,9 @@ namespace Renci.SshNet.Abstractions
 #endif
         }
 #else
-        public static global::SshNet.Security.Cryptography.RIPEMD160 CreateRIPEMD160()
+        public static RIPEMD160 CreateRIPEMD160()
         {
-            return new global::SshNet.Security.Cryptography.RIPEMD160();
+            return new RIPEMD160();
         }
 #endif // FEATURE_HASH_RIPEMD160
 
@@ -263,9 +263,9 @@ namespace Renci.SshNet.Abstractions
             return new System.Security.Cryptography.HMACRIPEMD160(key);
         }
 #else
-        public static global::SshNet.Security.Cryptography.HMACRIPEMD160 CreateHMACRIPEMD160(byte[] key)
+        public static HMACRIPEMD160 CreateHMACRIPEMD160(byte[] key)
         {
-            return new global::SshNet.Security.Cryptography.HMACRIPEMD160(key);
+            return new HMACRIPEMD160(key);
         }
 #endif // FEATURE_HMAC_RIPEMD160
     }
